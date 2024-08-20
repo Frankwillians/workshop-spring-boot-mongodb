@@ -1,6 +1,7 @@
 package com.frank.workshopmongo.services;
 
 import com.frank.workshopmongo.domain.User;
+import com.frank.workshopmongo.dto.UserDTO;
 import com.frank.workshopmongo.repository.UserRepository;
 import com.frank.workshopmongo.services.exception.ObjectNotFoundException;
 import com.sun.jdi.ObjectCollectedException;
@@ -27,4 +28,15 @@ public class UserService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 
     }
+
+    public User insert(User obj){
+        return repo.insert(obj);
+
+    }
+    public User fromDTO(UserDTO objDto){
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+    }
+
 }
+
+
